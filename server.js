@@ -8,9 +8,7 @@ var jwt = require('jsonwebtoken');
 const cors = require('cors');
 const app = express();
 
-app.use(cors({ origin: true }));
-app.options('*', cors());
-app.set('secretKey', 'nodeRestApi'); // jwt secret token
+app.use(cors({credentials: true, origin: true}));
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -19,9 +17,12 @@ app.use((req, res, next) => {
     next();
 });
 
+app.set('secretKey', 'nodeRestApi'); // jwt secret token
+
+
 // connection to mongodb
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.get('/', function(req, res){
     res.json({"tutorial" : "Build REST API with node.js"});
