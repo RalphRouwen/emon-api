@@ -8,8 +8,8 @@ var jwt = require('jsonwebtoken');
 const cors = require('cors');
 const app = express();
 
-app.use(cors({credentials: true, origin: true}));
-
+app.use(cors());
+app.options('*', cors());
 app.set('secretKey', 'nodeRestApi'); // jwt secret token
 
 // connection to mongodb
