@@ -21,7 +21,6 @@ app.get('/', function(req, res){
 });
 // public route
 app.use('/userss', users);
-app.use('/test');
 // private route
 app.use('/meter', validateUser, meter);
 
@@ -57,5 +56,5 @@ app.use(function(err, req, res, next) {
         res.status(500).json({message: "Something looks wrong :( !!!"});
 });
 app.listen(3005, function(){
-    console.log('Node server listening on port 3002');
+    console.log('Node server listening on port 3005');
 });
