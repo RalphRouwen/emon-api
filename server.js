@@ -5,7 +5,10 @@ const users = require('./app/routes/users');
 const bodyParser = require('body-parser');
 const mongoose = require('./app/config/database'); //database configuration
 var jwt = require('jsonwebtoken');
+const cors = require('cors');
 const app = express();
+
+app.use(cors());
 
 app.set('secretKey', 'nodeRestApi'); // jwt secret token
 
@@ -17,7 +20,8 @@ app.get('/', function(req, res){
     res.json({"tutorial" : "Build REST API with node.js"});
 });
 // public route
-app.use('/users', users);
+app.use('/userss', users);
+app.use('/test');
 // private route
 app.use('/meter', validateUser, meter);
 
