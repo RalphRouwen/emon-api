@@ -18,10 +18,10 @@ module.exports = {
             datetime: {
                 // '$gte': new Date('2020-03-16T11:30:00Z'),
                 // '$lte': new Date('2020-03-16T12:30:00Z')
-                '$gte': new Date(req.body.rangeFrom),
-                '$lte': new Date(req.body.rangeTo)
+                '$gte': new Date(req.query.rangeFrom),
+                '$lte': new Date(req.query.rangeTo)
             }
-        }).limit(Number(req.body.limit));
+        }).limit(Number(req.query.limit));
 
         query.exec((err, meter) => {
             if(err){
